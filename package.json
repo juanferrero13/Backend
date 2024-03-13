@@ -1,0 +1,36 @@
+{
+  "type": "module",
+  "name": "curso-backend",
+  "version": "1.0.0",
+  "description": "proyecto backend para coderhouse",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/index.js",
+    "start": "node src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/juanferrero13/Backend.git"
+  },
+  "keywords": [
+    "backend",
+    "node",
+    "js",
+    "MongoDB",
+    "express"
+  ],
+  "author": "Juan Pablo Ferrero",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/juanferrero13/Backend/issues"
+  },
+  "homepage": "https://github.com/juanferrero13/Backend#readme",
+  "dependencies": {
+    "express": "^4.18.3",
+    "moment": "^2.30.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}

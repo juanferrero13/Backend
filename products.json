@@ -1,5 +1,14 @@
 [
   {
+    "id": 1,
+    "title": "Reloj Montreal",
+    "description": "Reloj Montreal Hombre Analogico",
+    "price": 15000,
+    "thumbnail": "url-img",
+    "code": "abdc1",
+    "stock": 10
+  },
+  {
     "id": 2,
     "title": "Reloj Montreal",
     "description": "Reloj Montreal Hombre Digital",
@@ -33,6 +42,51 @@
     "price": 18000,
     "thumbnail": "url-img",
     "code": "abdc5",
+    "stock": 10
+  },
+  {
+    "id": 6,
+    "title": "Reloj Montreal",
+    "description": "Reloj Montreal Mujer Moda",
+    "price": 18000,
+    "thumbnail": "url-img",
+    "code": "abdc6",
+    "stock": 10
+  },
+  {
+    "id": 7,
+    "title": "Reloj Montreal",
+    "description": "Reloj Montreal Mujer Deportivo",
+    "price": 15000,
+    "thumbnail": "url-img",
+    "code": "abdc7",
+    "stock": 10
+  },
+  {
+    "id": 8,
+    "title": "Reloj Montreal",
+    "description": "Reloj Montreal Mujer Digital",
+    "price": 19000,
+    "thumbnail": "url-img",
+    "code": "abdc8",
+    "stock": 10
+  },
+  {
+    "id": 9,
+    "title": "Reloj Montreal",
+    "description": "Reloj Montreal Mujer Analogico",
+    "price": 17000,
+    "thumbnail": "url-img",
+    "code": "abdc9",
+    "stock": 10
+  },
+  {
+    "id": 10,
+    "title": "Reloj Montreal",
+    "description": "Reloj Montreal Mujer Clásico",
+    "price": 22000,
+    "thumbnail": "url-img",
+    "code": "abdc10",
     "stock": 10
   }
 ]

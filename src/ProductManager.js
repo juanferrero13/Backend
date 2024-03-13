@@ -1,4 +1,4 @@
-const fs = require("fs")
+import fs from "fs";
 
 class ProductManager {
     //Variable estatica
@@ -107,7 +107,6 @@ class ProductManager {
                 await fs.promises.writeFile(this.path, JSON.stringify(products, null, 2))
 
                 console.log("Producto actualizado correctamente")
-                console.log(products)
             } else {
                 console.log("Producto no encontrado")
             }
@@ -139,11 +138,16 @@ class ProductManager {
 const manager = new ProductManager();
 
 //Se llama al método "addProduct""
-manager.addProduct("Reloj Montreal", "Reloj Montreal Hombre Analogico", 15000, "url-img", "abdc1", 10)
-manager.addProduct("Reloj Montreal", "Reloj Montreal Hombre Digital", 15000, "url-img", "abdc2", 10)
-manager.addProduct("Reloj Montreal", "Reloj Montreal Hombre Clásico", 20000, "url-img", "abdc3", 10)
-manager.addProduct("Reloj Montreal", "Reloj Montreal Hombre Deportivo", 18000, "url-img", "abdc4", 10)
-manager.addProduct("Reloj Montreal", "Reloj Montreal Hombre Moda", 18000, "url-img", "abdc5", 10)
+// manager.addProduct("Reloj Montreal", "Reloj Montreal Hombre Analogico", 15000, "url-img", "abdc1", 10)
+// manager.addProduct("Reloj Montreal", "Reloj Montreal Hombre Digital", 15000, "url-img", "abdc2", 10)
+// manager.addProduct("Reloj Montreal", "Reloj Montreal Hombre Clásico", 20000, "url-img", "abdc3", 10)
+// manager.addProduct("Reloj Montreal", "Reloj Montreal Hombre Deportivo", 18000, "url-img", "abdc4", 10)
+// manager.addProduct("Reloj Montreal", "Reloj Montreal Hombre Moda", 18000, "url-img", "abdc5", 10)
+// manager.addProduct("Reloj Montreal", "Reloj Montreal Mujer Moda", 18000, "url-img", "abdc6", 10)
+// manager.addProduct("Reloj Montreal", "Reloj Montreal Mujer Deportivo", 15000, "url-img", "abdc7", 10)
+// manager.addProduct("Reloj Montreal", "Reloj Montreal Mujer Digital", 19000, "url-img", "abdc8", 10)
+// manager.addProduct("Reloj Montreal", "Reloj Montreal Mujer Analogico", 17000, "url-img", "abdc9", 10)
+// manager.addProduct("Reloj Montreal", "Reloj Montreal Mujer Clásico", 22000, "url-img", "abdc10", 10)
 
 //Se llama al método "getProducts"
 // console.log(manager.getProducts())
@@ -152,7 +156,11 @@ manager.addProduct("Reloj Montreal", "Reloj Montreal Hombre Moda", 18000, "url-i
 // manager.getProductById(2)
 
 // Actualizar el producto 
-// manager.updateProduct(2, { price: 26000, stock: 20 });
+// manager.updateProduct(4, { price: 26000, stock: 15 });
 
 //Eliminar un producto
-manager.deleteProduct(1)
+// manager.deleteProduct(10)
+
+
+// Exporto la clase ProductManager
+export default ProductManager
