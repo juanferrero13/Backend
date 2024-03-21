@@ -3,62 +3,35 @@
 //Importo el modulo de FileSystem 
 import fs from "fs";
 // Importo la clase ProductManager del archivo ProductManager.js
-import ProductManager from "./ProductManager.js"
+import ProductManager from "./controllers/productManager.js"
+// Importo la clase CartManager del archivo CartManager.js
+import CartManager from "./controllers/cartManager.js";
 
 // Importar el modulo de express y creo el PUERTO 8080
 import express from "express"
 const PUERTO = 8080
+import productsRouter from "./routes/products.router.js"
+import cartsRouter from "./routes/carts.router.js"
 
 // Creación de app express
 const app = express()
 
 // Creo una instancia de ProductManager
 const productManager = new ProductManager()
+const cartManager = new CartManager()
 
 app.listen(PUERTO, () => {
     console.log(`Escuchando en el puerto: ${PUERTO}`)
 })
 
+//Utilizamos json para los datos
+app.use(express.json())
+//Le dice al servidor que vamos a trabajar con datos complejos, por ejemplo al recibir varias querys
+app.use(express.urlencoded({ extended: true }))
 
-app.get("/products", async (req, res) => {
-    try {
-        //Leo los productos del "products.json"
-        const products = await fs.promises.readFile("./products.json", "utf-8")
-        //Parseo los productos
-        const productsJson = JSON.parse(products)
-        //Busco el limite y utilizo el metodo "Number" para convertir el dato del query de String a Number
-        let limit = Number(req.query.limit)
-        //Utilizamos el metodo "slice" para devolver un cierto número de productos 
-        let productsLimit = productsJson.slice(0, limit)
-        //Si se establece un limite se devuelven solo esos productos, de lo contario el array entero
-        if (limit) {
-            res.send(productsLimit)
-        } else {
-            res.send(productsJson)
-        }
-    } catch (error) {
-        console.log("Error al leer el archivo", error)
-    }
-})
+//Configuro ruta de mi productRouter y cartRouter
+app.use("/", productsRouter)
+app.use("/", cartsRouter)
 
-
-app.get("/products/:pid", async (req, res) => {
-    try {
-        //Leo los productos del "products.json"
-        const products = await fs.promises.readFile("./products.json", "utf-8")
-        //Parseo los productos
-        const productsJson = JSON.parse(products)
-        //Utilizo el "params" para mandarle un numero de ID por parametro
-        const id = parseInt(req.params.pid)
-        //Buscamos el producto que coincida con el ID ingresado
-        const productId = productsJson.find(prod => prod.id === id)
-        //Si se encuantra el producto con el ID ingresado devolvemos ese producto, de lo contrario devolvemos un mensaje indicando que no se encontro el producto con ese ID
-        if (productId) {
-            res.send(productId)
-        } else {
-            res.send("Producto no encontrado")
-        }
-    } catch (error) {
-        console.log("Error al leer el archivo", error)
-    }
-})
+//Agregar un prefijo virtual para cambiar el nombre de la carpeta public y comvertirla en un recurso estatico
+app.use("/index", express.static("public"))

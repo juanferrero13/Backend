@@ -3,44 +3,52 @@ import fs from "fs";
 class ProductManager {
     //Variable estatica
     static lastId = 0
-    constructor(products = [], path = "./products.json") {
+    constructor(products = [], path = "./src/models/products.json") {
         this.products = products
         this.path = path
     }
 
-    addProduct(title, description, price, thumbnail, code, stock) {
+    async addProduct(title, description, price, thumbnail, code, stock) {
+        try {
+            // Verifico campos requeridos
+            if (!title || !description || !price || !thumbnail || !code || !stock) {
+                // Lanza un error si alguno de los campos requeridos del producto no está completo
+                throw new Error("Debes completar todos los campos")
+            }
 
-        // Verificar campos requeridos
-        if (!title || !description || !price || !thumbnail || !code || !stock) {
-            console.log("Debes completar todos los campos");
-            return;
+            // Verifico duplicados por código
+            const existingProducts = await this.getProductsFromFile()
+            if (existingProducts.some(item => item.code === code)) {
+                // Lanza un error si ya existe un producto con el mismo código
+                throw new Error("Ya existe un producto con ese código")
+            }
+
+            // Obtengo el último ID utilizado
+            const lastProductId = existingProducts.length > 0 ? existingProducts[existingProducts.length - 1].id : 0
+
+            // Creo el nuevo producto con el nuevo ID
+            const newProduct = {
+                id: lastProductId + 1,
+                title,
+                description,
+                price,
+                thumbnail,
+                code,
+                stock
+            }
+
+            // Agrego el nuevo producto al arreglo
+            existingProducts.push(newProduct)
+
+            // Guardo los productos actualizados en el archivo
+            await this.saveProductsToFile(existingProducts)
+
+            console.log("Producto agregado correctamente")
+            return newProduct
+        } catch (error) {
+            console.error("Error al agregar el producto:", error.message)
+            throw error // Relanza el error para su manejo posterior
         }
-
-        // Verificar duplicados por código
-        if (this.products.some(item => item.code === code)) {
-            console.log("Ya existe un producto con ese código");
-            return;
-        }
-
-        //Creo un nuevo objeto
-        const newProduct = {
-            id: ++ProductManager.lastId,
-            title,
-            description,
-            price,
-            thumbnail,
-            code,
-            stock
-        }
-
-        //Se agrega al array
-        this.products.push(newProduct)
-
-        //Guardar el arreglo
-        const saveProduct = async () => {
-            await fs.promises.writeFile(this.path, JSON.stringify(this.products, null, 2))
-        }
-        saveProduct()
     }
 
     //Leer el archivo de productos y retornalos
@@ -121,7 +129,7 @@ class ProductManager {
             const readFile = await fs.promises.readFile(this.path, "utf-8")
             let products = JSON.parse(readFile)
 
-             // Filtra el array de productos para excluir el producto con el ID dado
+            // Filtra el array de productos para excluir el producto con el ID dado
             products = products.filter(product => product.id !== id)
 
             // Escribe los cambios en el archivo
@@ -160,7 +168,6 @@ const manager = new ProductManager();
 
 //Eliminar un producto
 // manager.deleteProduct(10)
-
 
 // Exporto la clase ProductManager
 export default ProductManager
