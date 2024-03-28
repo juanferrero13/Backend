@@ -1,0 +1,23 @@
+<h1 class="title-rtp">Handlebars y Websockets - Real Time Products</h1>
+
+<div id="contentProducts"></div>
+
+<h3 class="title-form">Formulario para agregar productos</h3>
+
+<form class="form">
+    <input class="input" type="text" id="title" placeholder="title">
+    <input class="input" type="text" id="description" placeholder="description">
+    <input class="input" type="number" id="price" placeholder="price">
+    <input class="input" type="text" id="img" value="url-img">
+    <input class="input" type="text" id="code" placeholder="code">
+    <input class="input" type="number" id="stock" placeholder="stock">
+    <input class="input" type="text" id="category" placeholder="category">
+    <select id="status">
+        <option value="true">Activo</option>
+        <option value="false">Inactivo</option>
+    </select>
+    <button type="button" class="btn-form" id="btnSend">AGREGAR PRODUCTO</button>
+</form>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.min.js"></script>
+<script src="js/main.js"></script>

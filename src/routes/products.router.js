@@ -27,7 +27,7 @@ router.get("/api/products", async (req, res) => {
         console.log("Error al leer el archivo", error)
         res.status(500).json({
             error: "Error interno del servidor"
-        });
+        })
     }
 })
 
@@ -151,6 +151,21 @@ router.delete("/api/products/:pid", async (req, res) => {
 
         //Busco el ID del producto
         const id = parseInt(req.params.pid)
+
+        // Verifico si el ID no es un número válido
+        if (isNaN(id)) {
+            res.status(404).json({ error: "El ID ingresado no es válido" })
+            return; // Retorna para evitar que continúe la ejecución del código
+        }
+
+        // Busco si el producto con el ID dado existe en la lista
+        const productIndex = products.findIndex(product => product.id === id)
+
+        // Si el producto no existe en la lista, devuelve un error
+        if (productIndex === -1) {
+            res.status(404).json({ error: "No se encontró ningún producto con el ID proporcionado" })
+            return; // Retorna para evitar que continúe la ejecución del código
+        }
 
         // Filtra el array de productos para excluir el producto con el ID dado
         products = products.filter(product => product.id !== id)

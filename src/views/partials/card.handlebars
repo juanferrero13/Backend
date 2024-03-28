@@ -1,0 +1,12 @@
+<section class="container">
+  {{#each productsJson}}
+    <div class="card">
+      {{!-- <img src="" alt="img-product"{{this.thumbnaild}} /> --}}
+      <h2>Titulo: {{this.title}}</h2>
+      <p>Descripción: {{this.description}}</p>
+      <p>Categoría: {{this.category}}</p>
+      <h3>Precio: ${{this.price}}</h3>
+      <button class="btn-card">ELIMINAR</button>
+    </div>
+  {{/each}}
+</section>

@@ -1,107 +1,101 @@
 [
-    {
-        "id": 1,
-        "title": "Reloj Montreal",
-        "description": "Reloj Montreal Hombre Analogico",
-        "price": 15000,
-        "thumbnail": "url-img",
-        "code": "abdc1",
-        "stock": 10
-    },
-    {
-        "id": 2,
-        "title": "Reloj Montreal",
-        "description": "Reloj Montreal Hombre Analogico Deportivo",
-        "price": 20000,
-        "thumbnail": "url-img",
-        "code": "abdc25",
-        "stock": 20,
-        "status": true,
-        "category": "relojes 2024"
-    },
-    {
-        "id": 3,
-        "title": "Reloj Montreal",
-        "description": "Reloj Montreal Hombre Clásico",
-        "price": 20000,
-        "thumbnail": "url-img",
-        "code": "abdc3",
-        "stock": 10
-    },
-    {
-        "id": 4,
-        "title": "Reloj Montreal",
-        "description": "Reloj Montreal Hombre Deportivo",
-        "price": 18000,
-        "thumbnail": "url-img",
-        "code": "abdc4",
-        "stock": 10
-    },
-    {
-        "id": 5,
-        "title": "Reloj Montreal",
-        "description": "Reloj Montreal Hombre Moda",
-        "price": 18000,
-        "thumbnail": "url-img",
-        "code": "abdc5",
-        "stock": 10
-    },
-    {
-        "id": 6,
-        "title": "Reloj Montreal",
-        "description": "Reloj Montreal Mujer Moda",
-        "price": 18000,
-        "thumbnail": "url-img",
-        "code": "abdc6",
-        "stock": 10
-    },
-    {
-        "id": 7,
-        "title": "Reloj Montreal",
-        "description": "Reloj Montreal Mujer Deportivo",
-        "price": 15000,
-        "thumbnail": "url-img",
-        "code": "abdc7",
-        "stock": 10
-    },
-    {
-        "id": 8,
-        "title": "Reloj Montreal",
-        "description": "Reloj Montreal Mujer Digital",
-        "price": 19000,
-        "thumbnail": "url-img",
-        "code": "abdc8",
-        "stock": 10
-    },
-    {
-        "id": 9,
-        "title": "Reloj Montreal",
-        "description": "Reloj Montreal Mujer Analogico",
-        "price": 17000,
-        "thumbnail": "url-img",
-        "code": "abdc9",
-        "stock": 10
-    },
-    {
-        "id": 10,
-        "title": "Reloj Montreal",
-        "description": "Reloj Montreal Mujer Analogico Deportivo",
-        "price": 17000,
-        "thumbnail": "url-img",
-        "code": "abdc12",
-        "stock": 25,
-        "status": true,
-        "category": "relojes 2024"
-    },
-    {
-        "id": 11,
-        "title": "Reloj Montreal",
-        "description": "Reloj Montreal Ultimate",
-        "price": 15000,
-        "thumbnail": "url-img",
-        "code": "abdc15",
-        "stock": 10,
-        "status": true,
-        "category": "relojes 2024"
-    }
+  {
+    "id": 2,
+    "title": "Reloj Montreal",
+    "description": "Reloj Montreal Hombre Analogico Deportivo",
+    "price": 20000,
+    "thumbnail": "url-img",
+    "code": "abdc25",
+    "stock": 20,
+    "status": true,
+    "category": "Relojes 2024"
+  },
+  {
+    "id": 3,
+    "title": "Reloj Montreal",
+    "description": "Reloj Montreal Hombre Clásico",
+    "price": 20000,
+    "thumbnail": "url-img",
+    "code": "abdc3",
+    "stock": 10,
+    "status": true,
+    "category": "Relojes 2024"
+  },
+  {
+    "id": 4,
+    "title": "Reloj Montreal",
+    "description": "Reloj Montreal Hombre Deportivo",
+    "price": 18000,
+    "thumbnail": "url-img",
+    "code": "abdc4",
+    "stock": 10,
+    "status": true,
+    "category": "Relojes 2024"
+  },
+  {
+    "id": 5,
+    "title": "Reloj Montreal",
+    "description": "Reloj Montreal Hombre Moda",
+    "price": 18000,
+    "thumbnail": "url-img",
+    "code": "abdc5",
+    "stock": 10,
+    "status": true,
+    "category": "Relojes 2024"
+  },
+  {
+    "id": 6,
+    "title": "Reloj Montreal",
+    "description": "Reloj Montreal Mujer Moda",
+    "price": 18000,
+    "thumbnail": "url-img",
+    "code": "abdc6",
+    "stock": 10,
+    "status": true,
+    "category": "Relojes 2024"
+  },
+  {
+    "id": 7,
+    "title": "Reloj Montreal",
+    "description": "Reloj Montreal Mujer Deportivo",
+    "price": 15000,
+    "thumbnail": "url-img",
+    "code": "abdc7",
+    "stock": 10,
+    "status": true,
+    "category": "Relojes 2024"
+  },
+  {
+    "id": 8,
+    "title": "Reloj Montreal",
+    "description": "Reloj Montreal Mujer Digital",
+    "price": 19000,
+    "thumbnail": "url-img",
+    "code": "abdc8",
+    "stock": 10,
+    "status": true,
+    "category": "Relojes 2024"
+  },
+  {
+    "id": 9,
+    "title": "Reloj Montreal",
+    "description": "Reloj Montreal Mujer Analogico",
+    "price": 17000,
+    "thumbnail": "url-img",
+    "code": "abdc9",
+    "stock": 10,
+    "status": true,
+    "category": "Relojes 2024"
+  },
+  {
+    "id": 10,
+    "title": "Reloj Montreal",
+    "description": "Reloj Montreal Mujer Analogico Deportivo",
+    "price": 17000,
+    "thumbnail": "url-img",
+    "code": "abdc12",
+    "stock": 25,
+    "status": true,
+    "category": "Relojes 2024"
+  }
 ]
