@@ -8,7 +8,7 @@ class ProductManager {
         this.path = path
     }
 
-    async addProduct(title, description, price, thumbnail, code, stock) {
+    async addProduct(title, description, price, thumbnail, code, stock, status, category) {
         try {
             // Verifico campos requeridos
             if (!title || !description || !price || !thumbnail || !code || !stock) {
@@ -17,7 +17,7 @@ class ProductManager {
             }
 
             // Verifico duplicados por código
-            const existingProducts = await this.getProductsFromFile()
+            const existingProducts = await this.getProducts()
             if (existingProducts.some(item => item.code === code)) {
                 // Lanza un error si ya existe un producto con el mismo código
                 throw new Error("Ya existe un producto con ese código")
@@ -34,7 +34,9 @@ class ProductManager {
                 price,
                 thumbnail,
                 code,
-                stock
+                stock,
+                status,
+                category
             }
 
             // Agrego el nuevo producto al arreglo
@@ -49,6 +51,10 @@ class ProductManager {
             console.error("Error al agregar el producto:", error.message)
             throw error // Relanza el error para su manejo posterior
         }
+    }
+
+    async saveProductsToFile(products) {
+        fs.writeFile(this.path, JSON.stringify(products, null, 2), () => "utf-8")
     }
 
     //Leer el archivo de productos y retornalos

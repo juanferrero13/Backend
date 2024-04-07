@@ -121,6 +121,15 @@ io.on("connection", async (socket) => {
 
     //Recibimos la funcion "saveProduct" desde el cliente
     socket.on("saveProduct", async (product) => {
-        await productManager.addProduct(product)
+        await productManager.addProduct(
+            product.title,
+            product.description,
+            product.price,
+            product.img,
+            product.code,
+            product.stock,
+            product.status,
+            product.category
+        )
     })
 })
