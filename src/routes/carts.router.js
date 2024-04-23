@@ -22,8 +22,8 @@ router.get("/api/carts/:cid", async (req, res) => {
     const cartId = Number(req.params.cid)
 
     try {
-        const carrito = await cartManager.getCarritoById(cartId)
-        res.json(carrito.products).send({message: "Productos listados correctamente"})
+        const cart = await cartManager.getCarritoById(cartId)
+        res.json(cart.products).send({message: "Productos listados correctamente"})
     } catch (error) {
         res.status(500).json({
             error: "Error interno del servidor"

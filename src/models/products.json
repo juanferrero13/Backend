@@ -1,6 +1,5 @@
 [
   {
-    "id": 2,
     "title": "Reloj Montreal",
     "description": "Reloj Montreal Hombre Analogico Deportivo",
     "price": 20000,
@@ -11,7 +10,6 @@
     "category": "Relojes 2024"
   },
   {
-    "id": 3,
     "title": "Reloj Montreal",
     "description": "Reloj Montreal Hombre Clásico",
     "price": 20000,
@@ -22,7 +20,6 @@
     "category": "Relojes 2024"
   },
   {
-    "id": 4,
     "title": "Reloj Montreal",
     "description": "Reloj Montreal Hombre Deportivo",
     "price": 18000,
@@ -33,7 +30,6 @@
     "category": "Relojes 2024"
   },
   {
-    "id": 5,
     "title": "Reloj Montreal",
     "description": "Reloj Montreal Hombre Moda",
     "price": 18000,
@@ -44,7 +40,6 @@
     "category": "Relojes 2024"
   },
   {
-    "id": 6,
     "title": "Reloj Montreal",
     "description": "Reloj Montreal Mujer Moda",
     "price": 18000,
@@ -55,7 +50,6 @@
     "category": "Relojes 2024"
   },
   {
-    "id": 7,
     "title": "Reloj Montreal",
     "description": "Reloj Montreal Mujer Deportivo",
     "price": 15000,
@@ -66,7 +60,6 @@
     "category": "Relojes 2024"
   },
   {
-    "id": 8,
     "title": "Reloj Montreal",
     "description": "Reloj Montreal Mujer Digital",
     "price": 19000,
@@ -77,7 +70,6 @@
     "category": "Relojes 2024"
   },
   {
-    "id": 9,
     "title": "Reloj Montreal",
     "description": "Reloj Montreal Mujer Analogico",
     "price": 17000,
@@ -88,7 +80,6 @@
     "category": "Relojes 2024"
   },
   {
-    "id": 10,
     "title": "Reloj Montreal",
     "description": "Reloj Montreal Hombre Extreme",
     "price": "35000",
@@ -99,7 +90,6 @@
     "category": "Relojes 2024"
   },
   {
-    "id": 11,
     "title": "Reloj Montreal",
     "description": "Reloj Montreal Mujer Extreme",
     "price": "43000",

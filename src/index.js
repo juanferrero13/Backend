@@ -59,14 +59,16 @@
 // app.use("/index", express.static("public"))
 
 
-//Handlebars
-
+// Importar el modulo de express y creo el PUERTO 8080
 import express from "express"
 const PUERTO = 8080
 
-import viewRouter from "./routes/views.router.js"
 //Importo el modulo de express-handlebars
 import exphbs from "express-handlebars"
+import usersRouter from "./routes/users.router.js"
+import productsRouter from "./routes/products.router.js"
+import cartsRouter from "./routes/carts.router.js"
+import viewRouter from "./routes/views.router.js"
 
 //Importamos socket
 import { Server } from "socket.io"
@@ -95,14 +97,34 @@ const httpServer = app.listen(PUERTO, () => {
     console.log(`Escuchando en el puerto: ${PUERTO}`)
 })
 
+//Rutas
 app.use("/", viewRouter)
+app.use("/", usersRouter)
+app.use("/", productsRouter)
+app.use("/", cartsRouter)
+
+//Ruta para chat Websocket
+app.get("/", (req, res) => {
+    res.render("index")
+})
 
 //Instancia de socket.io del lado del servidor
 const io = new Server(httpServer)
 
-//Obtenemos el array de productos
-import ProductManager from "./controllers/productManager.js"
-const productManager = new ProductManager("./src/models/products.json")
+//Chat Websockets
+let messages = []
+
+//Establecemos la conección
+io.on("connection", (socket) => {
+    console.log("Nuevo usuario conectado")
+
+    socket.on("message", data => {
+        messages.push(data)
+
+        //Emitimos mensaje para el cliente con el array de datos
+        io.emit("messagesLogs", messages)
+    })
+})
 
 //Generamos la conección
 io.on("connection", async (socket) => {
@@ -133,3 +155,10 @@ io.on("connection", async (socket) => {
         )
     })
 })
+
+//Nos conectamos a Mongo Atlas por medio de mongoose
+import mongoose from "mongoose"
+
+mongoose.connect("mongodb+srv://juanpabloferrero13:coderhouse@cluster0.247wzzb.mongodb.net/ecommerce?retryWrites=true&w=majority&appName=Cluster0")
+    .then(() => console.log("Conectados a la BD"))
+    .catch((error) => console.log(`Error ${error}`))
