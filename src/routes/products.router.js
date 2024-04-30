@@ -238,9 +238,30 @@ router.get("/api/products/:pid", async (req, res) => {
 //Enviar/crear productos
 router.post("/api/products", async (req, res) => {
     const newProduct = req.body
+    const {
+        title,
+        description,
+        price,
+        img,
+        thumbnail,
+        code,
+        stock,
+        status,
+        category
+    } = newProduct
 
     try {
-        await productManager.addProduct(newProduct)
+        await productManager.addProduct(
+            title,
+            description,
+            price,
+            img,
+            thumbnail,
+            code,
+            stock,
+            status,
+            category
+        )
         res.status(201).json({
             message: "Producto agregado exitosamente"
         })

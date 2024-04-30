@@ -63,12 +63,20 @@
 import express from "express"
 const PUERTO = 8080
 
+//Importo la conexión a la DB
+import "./config/mongoose.js"
+
+
 //Importo el modulo de express-handlebars
 import exphbs from "express-handlebars"
 import usersRouter from "./routes/users.router.js"
 import productsRouter from "./routes/products.router.js"
 import cartsRouter from "./routes/carts.router.js"
 import viewRouter from "./routes/views.router.js"
+
+//Importo los modelos
+import ProductModel from "./models/products.model.js"
+import CartModel from "./models/carts.model.js"
 
 //Importamos socket
 import { Server } from "socket.io"
@@ -106,6 +114,34 @@ app.use("/", cartsRouter)
 //Ruta para chat Websocket
 app.get("/", (req, res) => {
     res.render("index")
+})
+
+
+//Ruta para ver los productos
+app.get("/products", async (req, res) => {
+    const page = req.query.page || 1
+    let limit = 3
+    try {
+        const products = await ProductModel.paginate({}, { limit, page })
+
+        const finalProducts = products.docs.map(prod => {
+            const { _id, ...rest } = prod.toObject()
+            return rest
+        })
+
+        res.render("products", {
+            products: finalProducts,
+            hasPrevPage: products.hasPrevPage,
+            hasNextPage: products.hasNextPage,
+            prevPage: products.prevPage,
+            nextPage: products.nextPage,
+            currentPage: products.page,
+            totalPages: products.totalPages
+        })
+
+    } catch (error) {
+        res.status(500).send("Error interno del servidor", error)
+    }
 })
 
 //Instancia de socket.io del lado del servidor
@@ -156,9 +192,19 @@ io.on("connection", async (socket) => {
     })
 })
 
-//Nos conectamos a Mongo Atlas por medio de mongoose
-import mongoose from "mongoose"
+// const main = async () => {
+//     const product1 = await ProductModel.findById("6627d9e0f79cf167e429ffab")
+//     console.log(product1)
 
-mongoose.connect("mongodb+srv://juanpabloferrero13:coderhouse@cluster0.247wzzb.mongodb.net/ecommerce?retryWrites=true&w=majority&appName=Cluster0")
-    .then(() => console.log("Conectados a la BD"))
-    .catch((error) => console.log(`Error ${error}`))
+//     const cart1 = await CartModel.findById("66305d81023504e98573f940")
+//     console.log(cart1)
+
+//     cart1.products.push(product1)
+
+//     await CartModel.findByIdAndUpdate("66305d81023504e98573f940", cart1)
+
+//     const cart1Find = await CartModel.findById("66305d81023504e98573f940").populate("products")
+//     console.log(cart1Find)
+// }
+
+// main()
